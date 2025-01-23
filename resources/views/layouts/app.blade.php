@@ -9,8 +9,8 @@
 <body>
     <nav>
         <ul>
-            <li><a href="{{ route('empresas.empresa') }}">Empresas</a></li>
-            <li><a href="{{ route('profesores.profesor') }}">Profesores</a></li>
+            <li><a href="{{ route('company.company') }}">Empresas</a></li>
+            <li><a href="{{ route('professor.professor') }}">Profesores</a></li>
         </ul>
     </nav>
         @yield('content')
