@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmpresasTable extends Migration
+class CreateCompanyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateEmpresasTable extends Migration
      */
     public function up()
     {
-        Schema::create('empresas', function (Blueprint $table) {
+        Schema::create('companys', function (Blueprint $table) {
             $table->id(); // Campo ID autoincremental
-            $table->string('nombre', 100);
-            $table->string('direccion', 255)->nullable();
-            $table->string('telefono', 20)->nullable();
+            $table->string('name', 100);
+            $table->string('address', 255)->nullable();
+            $table->string('telephone', 20)->nullable();
             $table->string('email', 100)->nullable();
-            $table->date('fecha_creacion')->nullable();
+            $table->date('date_creation')->nullable();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateEmpresasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empresas');
+        Schema::dropIfExists('companys');
     }
 }

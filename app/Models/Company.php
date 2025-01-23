@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Empresa extends Model
-{
-    protected $table = 'empresas';
+class Company extends Model {
+    protected $table = 'companys';
 
     protected $fillable = [
-        'nombre', 
-        'direccion', 
-        'telefono', 
+        'name', 
+        'address', 
+        'telephone', 
         'email', 
-        'fecha_creacion'
+        'date_creation'
     ];
 
     protected $hidden = ['created_at', 'updated_at'];
