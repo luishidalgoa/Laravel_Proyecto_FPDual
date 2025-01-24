@@ -1,20 +1,21 @@
 <?php
-
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model {
-    protected $table = 'companys';
+class Company extends Model
+{
+    use HasFactory;
+
+    protected $table = 'companys'; // Especifica el nombre correcto de la tabla
 
     protected $fillable = [
-        'name', 
-        'address', 
-        'telephone', 
-        'email', 
-        'date_creation'
+        'name',
+        'address',
+        'telephone',
+        'email',
+        'date_creation',
     ];
-
-    protected $hidden = ['created_at', 'updated_at'];
-
 }
+
