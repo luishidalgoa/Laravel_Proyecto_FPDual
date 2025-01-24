@@ -2,63 +2,77 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Mostrar todas las compañías
     public function index()
     {
-        //
+        $companys = Company::all(); // O usar paginación ->paginate(10)
+        return view('companys.index', compact('companys'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Mostrar el formulario de creación
     public function create()
     {
-        //
+        return view('companys.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Guardar una nueva compañía
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'address' => 'nullable|string|max:255',
+            'telephone' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:100',
+            'date_creation' => 'nullable|date',
+        ]);
+
+        Company::create($validated);
+
+        return redirect()->route('companys.index')->with('success', 'Company created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // Mostrar detalles de una compañía
+    public function show($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('companys.show', compact('company'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    // Mostrar el formulario de edición
+    public function edit($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('companys.edit', compact('company'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Actualizar una compañía
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'address' => 'nullable|string|max:255',
+            'telephone' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:100',
+            'date_creation' => 'nullable|date',
+        ]);
+
+        $company = Company::findOrFail($id);
+        $company->update($validated);
+
+        return redirect()->route('companys.index')->with('success', 'Company updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    // Eliminar una compañía
+    public function destroy($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+
+        return redirect()->route('companys.index')->with('success', 'Company deleted successfully.');
     }
 }
