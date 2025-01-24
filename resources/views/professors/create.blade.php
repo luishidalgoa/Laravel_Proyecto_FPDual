@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{ route('professor.store') }}" method="POST" class="card p-4">
+    <form action="{{ route('professors.store') }}" method="POST" class="card p-4">
         @csrf
         <div class="mb-3">
             <label for="fullname" class="form-label">Full Name</label>
@@ -47,7 +47,7 @@
             <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
         </div>
         <button type="submit" class="btn btn-success">Save</button>
-        <a href="{{ route('professor.index') }}" class="btn btn-secondary">Cancel</a>
+        <a href="{{ route('professors.index') }}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 @endsection

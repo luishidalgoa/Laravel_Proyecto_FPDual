@@ -18,9 +18,9 @@
             <p><strong>Email:</strong> {{ $professor->email }}</p>
         </div>
         <div class="card-footer text-end">
-            <a href="{{ route('professor.index') }}" class="btn btn-secondary">Back to List</a>
-            <a href="{{ route('professor.edit', $professor->id) }}" class="btn btn-warning">Edit</a>
-            <form action="{{ route('professor.destroy', $professor->id) }}" method="POST" class="d-inline">
+            <a href="{{ route('professors.index') }}" class="btn btn-secondary">Back to List</a>
+            <a href="{{ route('professors.edit', $professor->id) }}" class="btn btn-warning">Edit</a>
+            <form action="{{ route('professors.destroy', $professor->id) }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
