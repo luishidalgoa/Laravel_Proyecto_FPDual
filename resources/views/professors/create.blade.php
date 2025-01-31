@@ -6,6 +6,7 @@
 <div class="container">
     <h1 class="mb-4">Add New Professor</h1>
 
+    <!-- Mostrar errores de validación -->
     @if($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -16,6 +17,7 @@
         </div>
     @endif
 
+    <!-- Formulario para agregar un nuevo profesor -->
     <form action="{{ route('professors.store') }}" method="POST" class="card p-4">
         @csrf
         <div class="mb-3">

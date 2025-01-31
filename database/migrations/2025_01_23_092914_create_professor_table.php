@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Crear las migraciones.
      */
     public function up(): void
     {
@@ -24,10 +24,14 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Rollbacking.
      */
     public function down(): void
     {
-        Schema::dropIfExists('professors'); // Asegúrate de que aquí esté 'professors', no 'professor'
+        // Deshabilitar restricciones de clave foránea antes de eliminar la tabla
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('professors');
+        // Habilitar restricciones de clave foránea después de eliminar la tabla
+        Schema::enableForeignKeyConstraints();
     }
 };

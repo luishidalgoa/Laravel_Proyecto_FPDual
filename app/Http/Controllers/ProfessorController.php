@@ -1,37 +1,36 @@
 <?php
 
+// Define el espacio de nombres para el controlador ProfessorController
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// Importa las clases necesarias del framework Laravel
 use App\Models\Professor;
+use Illuminate\Http\Request;
 
-
+// Define la clase ProfessorController que extiende la clase base Controller
 class ProfessorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Método para mostrar todos los profesores
     public function index()
     {
-        $professors = Professor::all();
+        // Obtiene todos los profesores de la base de datos
+        $professors = Professor::all(); // O usar paginación ->paginate(10)
+        // Retorna la vista con la lista de profesores
         return view('professors.index', compact('professors'));
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Método para mostrar el formulario de creación de un nuevo profesor
     public function create()
     {
+        // Retorna la vista del formulario de creación
         return view('professors.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Método para guardar un nuevo profesor en la base de datos
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        // Valida los datos del formulario
+        $validated = $request->validate([
             'fullname' => 'required|string|max:100',
             'age' => 'required|integer|min:18|max:100',
             'gender' => 'required|in:male,female,other',
@@ -39,42 +38,42 @@ class ProfessorController extends Controller
             'telephone' => 'required|string|max:9',
             'email' => 'required|email|unique:professors,email|max:50',
         ]);
-
-        Professor::create($validate);
-
-        return redirect()->route('professors.index')
-            ->with('success', 'Professor created successfully.');
+    
+        // Crea un nuevo profesor con los datos validados
+        $professor = Professor::create($validated);
+    
+        // Redirige a la lista de profesores con un mensaje de éxito
+        return redirect()->route('professors.index')->with('success', 'Profesor creado exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // Método para mostrar un profesor específico
     public function show(string $id)
     {
-
+        // Busca el profesor por su ID
         $professor = Professor::find($id);
 
+        // Si no se encuentra el profesor, redirige con un mensaje de error
         if (!$professor) {
-            // Si no se encuentra el profesor, redirige o muestra un error
             return redirect()->route('professors.index')->with('error', 'Profesor no encontrado.');
         }
+
+        // Retorna la vista con los detalles del profesor
         return view('professors.show', compact('professor'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    // Método para mostrar el formulario de edición de un profesor
+    public function edit($id)
     {
+        // Busca el profesor por su ID o falla si no lo encuentra
         $professor = Professor::findOrFail($id);
+        // Retorna la vista del formulario de edición con los datos del profesor
         return view('professors.edit', compact('professor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Método para actualizar un profesor específico
     public function update(Request $request, string $id)
     {
+        // Valida los datos del formulario
         $validated = $request->validate([
             'fullname' => 'required|string|max:100',
             'age' => 'required|integer|min:18|max:100',
@@ -84,28 +83,41 @@ class ProfessorController extends Controller
             'email' => 'required|email|unique:professors,email,' . $id . '|max:50', // Excluir el email actual
         ]);
 
-        // Buscar el profesor
+        // Busca el profesor por su ID
         $professor = Professor::find($id);
 
+        // Si no se encuentra el profesor, redirige con un mensaje de error
         if (!$professor) {
             return redirect()->route('professors.index')->with('error', 'Profesor no encontrado.');
         }
 
-        // Actualizar el profesor con los datos validados
+        // Actualiza el profesor con los datos validados
         $professor->update($validated);
 
-        // Redirigir con mensaje de éxito
+        // Redirige a la lista de profesores con un mensaje de éxito
         return redirect()->route('professors.index')
             ->with('success', 'Profesor actualizado exitosamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Método para eliminar un profesor específico
     public function destroy(string $id)
     {
-        Professor::destroy($id);
+        // Busca el profesor por su ID
+        $professor = Professor::find($id);
+
+        // Si no se encuentra el profesor, redirige con un mensaje de error
+        if (!$professor) {
+            return redirect()->route('professors.index')->with('error', 'Profesor no encontrado.');
+        }
+
+        // Elimina las relaciones del profesor con las compañías
+        $professor->companies()->delete();
+
+        // Elimina el profesor
+        $professor->delete();
+
+        // Redirige a la lista de profesores con un mensaje de éxito
         return redirect()->route('professors.index')
-            ->with('success', 'Professor deleted successfully.');
+            ->with('success', 'Profesor eliminado exitosamente.');
     }
 }

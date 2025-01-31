@@ -1,9 +1,9 @@
-<!-- resources/views/companys/edit.blade.php -->
 @extends('layouts.app')
 
 @section('content')
 <h1>Edit Company</h1>
 
+<!-- Formulario para editar una compañía existente -->
 <form action="{{ route('companys.update', $company->id) }}" method="POST">
     @csrf
     @method('PUT')
@@ -26,6 +26,10 @@
     <div class="form-group">
         <label for="date_creation">Date Creation</label>
         <input type="date" name="date_creation" id="date_creation" class="form-control" value="{{ $company->date_creation }}">
+    </div>
+    <div class="form-group">
+        <label for="professor_id">Professor ID</label>
+        <input type="text" name="professor_id" id="professor_id" class="form-control" value="{{ $company->professor_id }}">
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
 </form>

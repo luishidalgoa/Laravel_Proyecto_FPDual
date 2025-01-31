@@ -1,3 +1,4 @@
+<!-- Laravel_Proyecto_FPDual/resources/views/professors/index.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'List of Professors')
@@ -6,14 +7,17 @@
 <div class="container">
     <h1 class="mb-4">List of Professors</h1>
 
+    <!-- Mostrar mensaje de éxito si existe -->
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
 
+    <!-- Botón para agregar un nuevo profesor -->
     <a href="{{ route('professors.create') }}" class="btn btn-success mb-3">Add New Professor</a>
 
+    <!-- Tabla para listar los profesores -->
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
@@ -24,10 +28,12 @@
                 <th>Address</th>
                 <th>Telephone</th>
                 <th>Email</th>
+                <th>Companies</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+            <!-- Iterar sobre los profesores y mostrarlos en la tabla -->
             @forelse($professors as $professor)
                 <tr>
                     <td>{{ $professor->id }}</td>
@@ -38,6 +44,12 @@
                     <td>{{ $professor->telephone }}</td>
                     <td>{{ $professor->email }}</td>
                     <td>
+                        @foreach($professor->companies as $company)
+                            {{ $company->name }}<br>
+                        @endforeach
+                    </td>
+                    <td>
+                        <!-- Botones para ver, editar y eliminar un profesor -->
                         <a href="{{ route('professors.show', $professor->id) }}" class="btn btn-info btn-sm">View</a>
                         <a href="{{ route('professors.edit', $professor->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('professors.destroy', $professor->id) }}" method="POST" class="d-inline">
@@ -48,8 +60,9 @@
                     </td>
                 </tr>
             @empty
+                <!-- Mostrar mensaje si no se encuentran profesores -->
                 <tr>
-                    <td colspan="8" class="text-center">No professors found.</td>
+                    <td colspan="9" class="text-center">No professors found.</td>
                 </tr>
             @endforelse
         </tbody>
