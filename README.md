@@ -123,10 +123,6 @@ web.php
 - Accede a la aplicación en `http://localhost:8000`.
 - Utiliza la barra de navegación para gestionar empresas y profesores.
 
-## Contribuir
-
-¡Gracias por considerar contribuir al proyecto! Por favor, lee la [guía de contribución](https://laravel.com/docs/contributions) para más detalles sobre cómo contribuir.
-
 ## Licencia
 
 Este proyecto es software de código abierto licenciado bajo la [licencia MIT](https://opensource.org/licenses/MIT).
