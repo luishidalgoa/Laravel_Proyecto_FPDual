@@ -26,12 +26,11 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
 - **Gestión de Empresas**: Administra registros de empresas incluyendo nombre, dirección, teléfono, correo electrónico y fecha de creación.
 - **Gestión de Profesores**: Administra registros de profesores incluyendo nombre completo, edad, género, dirección, teléfono y correo electrónico.
 - **Interfaz de Usuario**: Una interfaz amigable construida con Bootstrap para facilitar la navegación e interacción.
-
+```
 ## Estructura del Proyecto
 
 La estructura del proyecto sigue la estructura estándar del framework Laravel:
-
-```
+```text
 Laravel_Proyecto_FPDual/
 ├── app/
 │   ├── Http/
@@ -63,11 +62,7 @@ Laravel_Proyecto_FPDual/
 │   │   └── layouts/
 │   │       └── app.blade.php
 ├── routes/
-│   └── 
-
-web.php
-
-
+│   └── web.php
 ├── storage/
 ├── tests/
 ├── vendor/
@@ -82,7 +77,7 @@ web.php
 ├── phpunit.xml
 ├── README.md
 └── vite.config.js
-```
+````
 
 ## Instalación
 
