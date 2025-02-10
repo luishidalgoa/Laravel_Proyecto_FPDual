@@ -118,7 +118,11 @@ Laravel_Proyecto_FPDual/
 - Accede a la aplicación en `http://localhost:8000`.
 - Utiliza la barra de navegación para gestionar empresas y profesores.
 
-## Licencia
 
-Este proyecto es software de código abierto licenciado bajo la [licencia MIT](https://opensource.org/licenses/MIT).
-```
+## CAMBIOS PASO A API del proyecto:
+
+
+- Se eliminó la devolución de vistas (`view()`) y se reemplazó con `response()->json()` para devolver datos en formato JSON.  
+- Las respuestas ahora incluyen códigos HTTP adecuados (`200`, `201`).  
+- Las rutas ahora se basan en REST, sin necesidad de `create()` y `edit()` porque los formularios ya no son necesarios.  
+- No se modificó la relación con `Professor`, solo se mantuvo la validación en caso de que el campo `professor_id` sea nulo.  
