@@ -133,7 +133,6 @@ Laravel_Proyecto_FPDual/
 ## CAMBIOS PASO A API del proyecto:
 
 ### Cambios de luis
-- Se eliminó la devolución de vistas (`view()`) y se reemplazó con `response()->json()` para devolver datos en formato JSON.  
 - Las respuestas ahora incluyen códigos HTTP adecuados (`200`, `201`).  
 - Las rutas ahora se basan en REST, sin necesidad de `create()` y `edit()` porque los formularios ya no son necesarios.  
 - No se modificó la relación con `Professor`, solo se mantuvo la validación en caso de que el campo `professor_id` sea nulo.  
