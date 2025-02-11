@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-
 class CompanyController extends Controller
 {
     // Obtener todas las compañías
