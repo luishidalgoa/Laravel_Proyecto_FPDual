@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\API\ProfessorApi;
+use App\Http\Controllers\API\CompanyApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\CompanyController;
-use App\Http\Controllers\API\ProfessorController;
 
 
-Route::apiResource('companys', CompanyController::class);
-Route::apiResource('professors', ProfessorController::class);
+Route::apiResource('companys', CompanyApi::class);
+Route::apiResource('professors', ProfessorApi::class);
 

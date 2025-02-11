@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\Company;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
-class CompanyController extends Controller
+use App\Http\Controllers\Controller;
+class CompanyApi extends Controller
 {
     // Obtener todas las compañías
     public function index()
