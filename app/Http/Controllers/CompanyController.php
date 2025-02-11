@@ -1,87 +1,104 @@
 <?php
 
-// Define el espacio de nombres para el controlador CompanyController
 namespace App\Http\Controllers;
-
 
 use App\Models\Company;
 use Illuminate\Http\Request;
 
-
 class CompanyController extends Controller
 {
-    // Devuelve todas las empresas almacenadas
-    public function list()
+    /**
+     * Este metodo es llamado justo al cargar el componente de compañias. Devolvera un array compuesto por todas las compañias.
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function index()
     {
-        $enterprises = Company::all(); 
-        return view('enterprises.list', ['enterprises' => $enterprises]);
-    }
-
-    // Muestra el formulario para añadir una nueva empresa
-    public function new()
-    {
-        return view('enterprises.new');
+        // Obtiene todas las compañías de la base de datos
+        $companys = Company::all(); // O usar paginación ->paginate(10)
+        // Retorna la vista con la lista de compañías
+        return view('companys.index', compact('companys'));
     }
 
     /**
-     * 
-     * Aqui estamos validando los datos que se ingresan en el formulario de creación de una empresa.
+     * Este metodo es llamado justo al cargar el componente de creacion de compañias. Devuelve la vista de con el formulario para crear la compañia
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function create()
+    {
+        // Retorna la vista del formulario de creación
+        return view('companys.create');
+    }
+
+    /**
+     * Este metodo es usado para persistir en la bbdd la compañia que el usuario relleno en el formulario
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Request $request)
+    public function store(Request $request)
     {
-        // Validación de los datos ingresados
-        $data = $request->validate([
-            'name' => 'required|string|max:100',
-            'address' => 'sometimes|string|max:255',
-            'telephone' => 'sometimes|string|max:20',
-            'email' => 'sometimes|email|max:100',
-            'date_creation' => 'sometimes|date',
-            'professor_id' => 'sometimes|integer|exists:professors,id',
-        ]);
-
-        // Se almacena el registro en la base de datos
-        Company::create($data);
-
-        return redirect()->route('enterprises.list')->with('message', 'Empresa añadida correctamente.');
-    }
-
-    // Presenta los detalles de una empresa específica
-    public function details(Company $enterprise)
-    {
-        return view('enterprises.details', ['enterprise' => $enterprise]);
-    }
-
-    // Muestra el formulario de modificación de una empresa
-    public function modify(Company $enterprise)
-    {
-        return view('enterprises.modify', ['enterprise' => $enterprise]);
-    }
-
-    // volvemos a validar al igual que en el create que los datos son correctos
-    public function change(Request $request, Company $enterprise)
-    {
-        $data = $request->validate([
+        // Valida los datos del formulario
+        $validated = $request->validate([
             'name' => 'required|string|max:100',
             'address' => 'nullable|string|max:255',
             'telephone' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:100',
             'date_creation' => 'nullable|date',
-            'professor_id' => 'nullable|integer|exists:professors,id',
+            'professor_id' => 'nullable|integer|exists:professors,id', // Cambiado a nullable
         ]);
-
-        // Verificación manual de `professor_id`
-        $enterprise->professor_id = $request->input('professor_id') ?? null;
-
-        $enterprise->update($data);
-
-        return redirect()->route('enterprises.list')->with('message', 'Información actualizada con éxito.');
+    
+        // Crea una nueva compañía con los datos validados
+        $company = Company::create($validated);
+    
+        // Redirige a la lista de compañías con un mensaje de éxito
+        return redirect()->route('companys.index')->with('success', 'Compañía creada exitosamente.');
+    }
+    // Método para mostrar una compañía específica
+    public function show(Company $company)
+    {
+        // Retorna la vista con los detalles de la compañía
+        return view('companys.show', compact('company'));
+    }
+    // Método para mostrar el formulario de edición de una compañía
+    public function edit(Company $company)
+    {
+        // Retorna la vista del formulario de edición con los datos de la compañía
+        return view('companys.edit', compact('company'));
     }
 
-    public function remove(Company $enterprise)
+    /**
+     * 
+     * Este metodo es usado para actualizar la compañia que el usuario relleno en el formulario
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Company $company
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, Company $company)
     {
-        $enterprise->delete();
-        return redirect()->route('enterprises.list')->with('message', 'Empresa eliminada exitosamente.');
+        // Valida los datos del formulario
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'address' => 'nullable|string|max:255',
+            'telephone' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:100',
+            'date_creation' => 'nullable|date',
+            'professor_id' => 'nullable|integer|exists:professors,id', // Permitir null para professor_id
+        ]);
+        // Si professor_id es null, establecerlo explícitamente en null
+        if ($request->input('professor_id') === null) {
+            $company->professor_id = null;
+        }
+        // Actualiza la compañía con los datos validados
+        $company->update($validated);
+        // Redirige a la lista de compañías con un mensaje de éxito
+        return redirect()->route('companys.index')->with('success', 'Compañía actualizada exitosamente.');
+    }
+
+    // Método para eliminar una compañía específica
+    public function destroy(Company $company)
+    {
+        // Elimina la compañía
+        $company->delete();
+        // Redirige a la lista de compañías con un mensaje de éxito
+        return redirect()->route('companys.index')->with('success', 'Compañía eliminada exitosamente.');
     }
 }
