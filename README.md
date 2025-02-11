@@ -35,9 +35,20 @@ Laravel_Proyecto_FPDual/
 ├── app/
 │   ├── Http/
 │   │   └── Controllers/
+|   |       ├── API/
+│   |       |   ├── CompanyController.php
+│   |       |   └── ProfessorController.php
 │   │       ├── CompanyController.php
 │   │       └── ProfessorController.php
+|   |       └── Controller.php
+│   |    └── Resources/
+│   |        ├── CompanyResource.php
+|   |    └── Requests/
+│   |        ├── CompanyRequest.php
+│   |        └── ProfessorRequest.php
 │   ├── Models/
+│   │   ├── Company.php
+│   │   └── Professor.php
 │   └── Providers/
 ├── bootstrap/
 ├── config/
@@ -121,7 +132,7 @@ Laravel_Proyecto_FPDual/
 
 ## CAMBIOS PASO A API del proyecto:
 
-
+### Cambios de luis
 - Se eliminó la devolución de vistas (`view()`) y se reemplazó con `response()->json()` para devolver datos en formato JSON.  
 - Las respuestas ahora incluyen códigos HTTP adecuados (`200`, `201`).  
 - Las rutas ahora se basan en REST, sin necesidad de `create()` y `edit()` porque los formularios ya no son necesarios.  
