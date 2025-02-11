@@ -10,7 +10,11 @@ class CompanyRequest extends FormRequest
     {
         return true;
     }
-
+    /**
+     * 
+     * Define las reglas de validación para los datos de la empresa.
+     * @return array{address: string, date_creation: string, email: string, name: string, professor_id: string, telephone: string}
+     */
     public function rules(): array
     {
         return [

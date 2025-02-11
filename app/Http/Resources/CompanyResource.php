@@ -4,6 +4,10 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * 
+ * Esta clase es importante porque nos permite transformar los datos de la empresa en un formato JSON.
+ */
 class CompanyResource extends JsonResource
 {
     public function toArray($request): array
