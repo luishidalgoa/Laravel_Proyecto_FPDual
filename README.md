@@ -33,14 +33,14 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
    ![Descripción de la imagen](/public/images/imagen4.png)
 
 - **POST**: Crea un nuevo profesor o empresa
--    ![Descripción de la imagen](/public/images/imagen9.png)
--    ![Descripción de la imagen](/public/images/imagen10.png)
+   ![Descripción de la imagen](/public/images/imagen9.png)
+   ![Descripción de la imagen](/public/images/imagen10.png)
 
 - **PUT**: Actualiza los datos de un profesor o empresa existente
--    ![Descripción de la imagen](/public/images/imagen11.png)
+   ![Descripción de la imagen](/public/images/imagen11.png)
 
 - **DELETE**: Elimina un profesor o empresa existente
--    ![Descripción de la imagen](/public/images/imagen12.png)
+   ![Descripción de la imagen](/public/images/imagen12.png)
 
 - **Autenticación de Profesores**: Permite a los profesores registrarse, iniciar sesión y cerrar sesión mediante un sistema de autenticación seguro.
   
