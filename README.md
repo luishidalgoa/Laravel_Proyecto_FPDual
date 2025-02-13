@@ -137,22 +137,21 @@ Laravel_Proyecto_FPDual/
 - Las respuestas ahora incluyen códigos HTTP adecuados (`200`, `201`).
 - Las rutas ahora se basan en REST, sin necesidad de `create()` y `edit()` porque los formularios ya no son necesarios.
 
-# Cambios De Antonio
+### Cambios de Antonio
 
-## AuthController
-- **Registro**: Valida y crea nuevos profesores, retornando un mensaje de éxito y los datos del profesor (antes se hacía desde `ProfessorApiController`)
-- **Inicio de Sesión**: Valida credenciales y genera un token de acceso para profesores autenticados.
-- **Cierre de Sesión**: Elimina el token de acceso actual, cerrando la sesión del profesor.
+- **AuthController**:
+  - **Registro**: Valida y crea nuevos profesores, retornando un mensaje de éxito y los datos del profesor (antes se hacía desde `ProfessorApiController`).
+  - **Inicio de Sesión**: Valida credenciales y genera un token de acceso para profesores autenticados.
+  - **Cierre de Sesión**: Elimina el token de acceso actual, cerrando la sesión del profesor.
 
-## AuthRequest
-- **Reglas de Validación**: Define reglas para registro (nombre, edad, género, etc.) y login (email y contraseña).
+- **AuthRequest**:
+  - **Reglas de Validación**: Define reglas para registro (nombre, edad, género, etc.) y login (email y contraseña).
 
-## AuthResource
-- **Formato de Respuesta**: Estructura los datos del profesor (ID, nombre, edad, género, etc.) para las respuestas JSON.
+- **AuthResource**:
+  - **Formato de Respuesta**: Estructura los datos del profesor (ID, nombre, edad, género, etc.) para las respuestas JSON.
 
-## Mejoras en Vistas
-- **Diseño**: Mejoras en la apariencia y usabilidad de las vistas.
+- **Mejoras en Vistas**:
+  - **Diseño**: Mejoras en la apariencia y usabilidad de las vistas.
 
-
-## Documentación
-- **Comentarios**: Añadidos comentarios explicativos una correcta documentación del código
+- **Documentación**:
+  - **Comentarios**: Añadidos comentarios explicativos para una correcta documentación del código.
