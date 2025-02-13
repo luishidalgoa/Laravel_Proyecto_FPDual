@@ -10,21 +10,49 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
 ## Características
 
 - **Gestión de Empresas**: Administra registros de empresas incluyendo nombre, dirección, teléfono, correo electrónico y fecha de creación.
+- 
 - **Gestión de Profesores**: Administra registros de profesores incluyendo nombre completo, edad, género, dirección, teléfono y correo electrónico.
+- 
 - **Interfaz de Usuario**: Una interfaz amigable construida con Bootstrap para facilitar la navegación e interacción.
+- 
 - **Vista index**: Una vista que muestra los profesores con las empresas que le corresponde del mismo modo que con las empresas.
   ![Descripción de la imagen](/public/images/imagen2.png)
+
 - **Vista Create**: Una vista que permite crear profesores y empresas.
   ![Descripción de la imagen](/public/images/imagen6.png)
-- **Vista Update**: Una vista que permite actualizar los datos de los profesores y empresas existentes.
+
+- **Vista Edit**: Una vista que permite actualizar los datos de los profesores y empresas existentes.
+- 
   ![Descripción de la imagen](/public/images/imagen7.png)
-- **Vista View**: Una vista que muestra los detalles completos de un profesor y las empresas asociadas a él.
+- **Vista Show**: Una vista que muestra los detalles completos de un profesor y las empresas asociadas a él.
   ![Descripción de la imagen](/public/images/imagen8.png)
-- **API RESTful**: Proporciona endpoints para interactuar con los recursos de empresas y profesores a través de una API RESTful.
+
+**API RESTful**: Proporciona endpoints para interactuar con los recursos de empresas y profesores a través de una API RESTful.
+
+- **GET**: Obtiene profesores o empresas
    ![Descripción de la imagen](/public/images/imagen4.png)
+
+- **POST**: Crea un nuevo profesor o empresa
+-    ![Descripción de la imagen](/public/images/imagen9.png)
+-    ![Descripción de la imagen](/public/images/imagen10.png)
+
+- **PUT**: Actualiza los datos de un profesor o empresa existente
+-    ![Descripción de la imagen](/public/images/imagen11.png)
+
+- **DELETE**: Elimina un profesor o empresa existente
+-    ![Descripción de la imagen](/public/images/imagen12.png)
+
 - **Autenticación de Profesores**: Permite a los profesores registrarse, iniciar sesión y cerrar sesión mediante un sistema de autenticación seguro.
+  
+- **Login**
   ![Descripción de la imagen](/public/images/imagen5.png)
 
+- **Obtención del usuario logueado a través del token**
+   ![Descripción de la imagen](/public/images/imagen16.png)
+
+- **Logout**
+ ![Descripción de la imagen](/public/images/imagen15.png)
+ 
 ## Estructura del Proyecto
 
 La estructura del proyecto sigue la estructura estándar del framework Laravel:
