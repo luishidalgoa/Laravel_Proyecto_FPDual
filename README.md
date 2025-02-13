@@ -1,32 +1,19 @@
 # Proyecto Laravel FPDual
 
+![Descripción de la imagen](/public/imagen/imagen1.png)
+
+
 ## Acerca del Proyecto
 
-Este proyecto es una aplicación web basada en Laravel diseñada para gestionar empresas y profesores. Proporciona funcionalidades para crear, leer, actualizar y eliminar (CRUD) registros tanto de empresas como de profesores.
+Este proyecto es una aplicación web basada en Laravel diseñada para gestionar empresas y profesores. Proporciona funcionalidades para crear, leer, actualizar y eliminar (CRUD) registros tanto de empresas como de profesores. Además, incluye una API RESTful para interactuar con estos recursos y un sistema de autenticación para profesores.
 
 ## Características
 
 - **Gestión de Empresas**: Administra registros de empresas incluyendo nombre, dirección, teléfono, correo electrónico y fecha de creación.
 - **Gestión de Profesores**: Administra registros de profesores incluyendo nombre completo, edad, género, dirección, teléfono y correo electrónico.
 - **Interfaz de Usuario**: Una interfaz amigable construida con Bootstrap para facilitar la navegación e interacción.
-
-## Estructura del Proyecto
-
-La estructura del proyecto sigue la estructura estándar del framework Laravel:
-
-```md
-# Proyecto Laravel FPDual
-
-## Acerca del Proyecto
-
-Este proyecto es una aplicación web basada en Laravel diseñada para gestionar empresas y profesores. Proporciona funcionalidades para crear, leer, actualizar y eliminar (CRUD) registros tanto de empresas como de profesores.
-
-## Características
-
-- **Gestión de Empresas**: Administra registros de empresas incluyendo nombre, dirección, teléfono, correo electrónico y fecha de creación.
-- **Gestión de Profesores**: Administra registros de profesores incluyendo nombre completo, edad, género, dirección, teléfono y correo electrónico.
-- **Interfaz de Usuario**: Una interfaz amigable construida con Bootstrap para facilitar la navegación e interacción.
-```
+- **API RESTful**: Proporciona endpoints para interactuar con los recursos de empresas y profesores a través de una API RESTful.
+- **Autenticación de Profesores**: Permite a los profesores registrarse, iniciar sesión y cerrar sesión mediante un sistema de autenticación seguro.
 
 ## Estructura del Proyecto
 
@@ -37,21 +24,21 @@ Laravel_Proyecto_FPDual/
 ├── app/
 │   ├── Http/
 │   │   └── Controllers/
-|   |       ├── API/
-│   |       |   ├── CompanyController.php
-│   |       |   └── ProfessorController.php
+│   │       ├── API/
+│   │       │   ├── AuthController.php
+│   │       │   ├── CompanyApiController.php
+│   │       │   └── ProfessorApiController.php
 │   │       ├── CompanyController.php
-│   │       └── ProfessorController.php
-|   |       └── Controller.php
-│   |    └── Resources/
-│   |        ├── CompanyResource.php
-|   |    └── Requests/
-│   |        ├── CompanyRequest.php
-│   |        └── ProfessorRequest.php
+│   │       ├── ProfessorController.php
+│   │       └── Controller.php
 │   ├── Models/
 │   │   ├── Company.php
 │   │   └── Professor.php
-│   └── Providers/
+│   ├── Providers/
+│   └── Resources/
+│       ├── AuthResource.php
+│       ├── CompanyResource.php
+│       └── ProfessorResource.php
 ├── bootstrap/
 ├── config/
 ├── database/
@@ -134,7 +121,7 @@ Laravel_Proyecto_FPDual/
 
 ## CAMBIOS PASO A API del proyecto:
 
-### Cambios de luis
+### Cambios de Luis
 
 - Las respuestas ahora incluyen códigos HTTP adecuados (`200`, `201`).
 - Las rutas ahora se basan en REST, sin necesidad de `create()` y `edit()` porque los formularios ya no son necesarios.
@@ -148,3 +135,23 @@ Laravel_Proyecto_FPDual/
 - Comprobación con herramienta ThunderClient del correcto funcionamiento de la API.
 - Las respuestas ahora incluyen códigos HTTP adecuados (`200`, `201`).
 - Las rutas ahora se basan en REST, sin necesidad de `create()` y `edit()` porque los formularios ya no son necesarios.
+
+# Cambios De Antonio
+
+## AuthController
+- **Registro**: Valida y crea nuevos profesores, retornando un mensaje de éxito y los datos del profesor (antes se hacía desde `ProfessorApiController`)
+- **Inicio de Sesión**: Valida credenciales y genera un token de acceso para profesores autenticados.
+- **Cierre de Sesión**: Elimina el token de acceso actual, cerrando la sesión del profesor.
+
+## AuthRequest
+- **Reglas de Validación**: Define reglas para registro (nombre, edad, género, etc.) y login (email y contraseña).
+
+## AuthResource
+- **Formato de Respuesta**: Estructura los datos del profesor (ID, nombre, edad, género, etc.) para las respuestas JSON.
+
+## Mejoras en Vistas
+- **Diseño**: Mejoras en la apariencia y usabilidad de las vistas.
+
+
+## Documentación
+- **Comentarios**: Añadidos comentarios explicativos una correcta documentación del código

@@ -1,11 +1,10 @@
-<!-- Laravel_Proyecto_FPDual/resources/views/professors/index.blade.php -->
 @extends('layouts.app')
 
-@section('title', 'List of Professors')
+@section('title', 'Lista de profesores')
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">List of Professors</h1>
+    <h1 class="mb-4">Lista de profesores</h1>
 
     <!-- Mostrar mensaje de éxito si existe -->
     @if(session('success'))
@@ -15,7 +14,12 @@
     @endif
 
     <!-- Botón para agregar un nuevo profesor -->
-    <a href="{{ route('professors.create') }}" class="btn btn-success mb-3">Add New Professor</a>
+    <a href="{{ route('professors.create') }}" class="btn btn-success mb-3">Añadir un profesor</a>
+
+    <!-- Botón para volver al index.blade.php dentro de layouts, centrado -->
+    <div class="text-center mb-3">
+        <a href="{{ route('layouts.index') }}" class="btn btn-primary">Volver al inicio</a>
+    </div>
 
     <!-- Tabla para listar los profesores -->
     <table class="table table-striped table-bordered">
@@ -50,19 +54,19 @@
                     </td>
                     <td>
                         <!-- Botones para ver, editar y eliminar un profesor -->
-                        <a href="{{ route('professors.show', $professor->id) }}" class="btn btn-info btn-sm">View</a>
-                        <a href="{{ route('professors.edit', $professor->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('professors.show', $professor->id) }}" class="btn btn-info btn-sm">Ver</a>
+                        <a href="{{ route('professors.edit', $professor->id) }}" class="btn btn-warning btn-sm">Editar</a>
                         <form action="{{ route('professors.destroy', $professor->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Borrar</button>
                         </form>
                     </td>
                 </tr>
             @empty
                 <!-- Mostrar mensaje si no se encuentran profesores -->
                 <tr>
-                    <td colspan="9" class="text-center">No professors found.</td>
+                    <td colspan="9" class="text-center">No se han encontrado profesores</td>
                 </tr>
             @endforelse
         </tbody>

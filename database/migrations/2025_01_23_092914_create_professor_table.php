@@ -9,19 +9,21 @@ return new class extends Migration
     /**
      * Crear las migraciones.
      */
-    public function up(): void
-    {
-        Schema::create('professors', function (Blueprint $table) {
-            $table->id();
-            $table->string('fullname', 100);
-            $table->integer('age');
-            $table->enum('gender', ['male', 'female', 'other']); // Opciones predefinidas para género
-            $table->string('address');
-            $table->string('telephone', 9);
-            $table->string('email', 50);
-            $table->timestamps();
-        });
-    }
+// En el archivo de migración professors
+public function up(): void
+{
+    Schema::create('professors', function (Blueprint $table) {
+        $table->id();
+        $table->string('fullname', 100);
+        $table->integer('age');
+        $table->enum('gender', ['male', 'female', 'other']);
+        $table->string('address');
+        $table->string('telephone', 9);
+        $table->string('email', 50);
+        $table->string('password'); // Columna nueva
+        $table->timestamps();
+    });
+}
 
     /**
      * Rollbacking.

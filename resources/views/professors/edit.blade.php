@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">Edit Professor</h1>
+    <h1 class="mb-4">Editar el profesor</h1>
 
     <!-- Formulario para editar un profesor existente -->
     <form action="{{ route('professors.update', $professor->id) }}" method="POST" class="card p-4">
@@ -38,8 +38,8 @@
                 <option value="other" {{ $professor->gender == 'other' ? 'selected' : '' }}>Otro</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('professors.index') }}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <a href="{{ route('professors.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 @endsection

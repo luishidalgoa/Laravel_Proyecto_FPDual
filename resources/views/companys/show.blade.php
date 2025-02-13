@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Company Details')
+@section('title', 'Información de la empresa')
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">Company Details</h1>
+    <h1 class="mb-4">Información de la empresa</h1>
 
     <!-- Tarjeta para mostrar los detalles de la compañía -->
     <div class="card">
@@ -21,12 +21,12 @@
         </div>
         <div class="card-footer text-end">
             <!-- Botones para volver a la lista, editar y eliminar la compañía -->
-            <a href="{{ route('companys.index') }}" class="btn btn-secondary">Back to List</a>
-            <a href="{{ route('companys.edit', $company->id) }}" class="btn btn-warning">Edit</a>
+            <a href="{{ route('companys.index') }}" class="btn btn-secondary">Volver a empresas</a>
+            <a href="{{ route('companys.edit', $company->id) }}" class="btn btn-warning">Editar</a>
             <form action="{{ route('companys.destroy', $company->id) }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro?')">Borrar</button>
             </form>
         </div>
     </div>

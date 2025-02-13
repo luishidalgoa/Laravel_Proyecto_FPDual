@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Professor Details')
+@section('title', 'Información del profesor')
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">Professor Details</h1>
+    <h1 class="mb-4">Información del profesor</h1>
 
     <!-- Tarjeta para mostrar los detalles del profesor -->
     <div class="card">
@@ -26,12 +26,12 @@
         </div>
         <div class="card-footer text-end">
             <!-- Botones para volver a la lista, editar y eliminar el profesor -->
-            <a href="{{ route('professors.index') }}" class="btn btn-secondary">Back to List</a>
-            <a href="{{ route('professors.edit', $professor->id) }}" class="btn btn-warning">Edit</a>
+            <a href="{{ route('professors.index') }}" class="btn btn-secondary">Volver a profesores</a>
+            <a href="{{ route('professors.edit', $professor->id) }}" class="btn btn-warning">Editar</a>
             <form action="{{ route('professors.destroy', $professor->id) }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro?')">Borrar</button>
             </form>
         </div>
     </div>

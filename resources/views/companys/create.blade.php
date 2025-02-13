@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Add New Company')
+@section('title', 'Añadir una empresa')
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">Add New Company</h1>
+    <h1 class="mb-4">Añadir una empresa</h1>
 
     <!-- Mostrar errores de validación -->
     @if($errors->any())
@@ -44,8 +44,8 @@
             <label for="professor_id" class="form-label">Professor ID</label>
             <input type="text" name="professor_id" class="form-control" value="{{ old('professor_id') }}">
         </div>
-        <button type="submit" class="btn btn-success">Save</button>
-        <a href="{{ route('companys.index') }}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{{ route('companys.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 @endsection

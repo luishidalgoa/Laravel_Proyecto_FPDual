@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Add New Professor')
+@section('title', 'Añadir un profesor')
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">Add New Professor</h1>
+    <h1 class="mb-4">Añadir un profesor</h1>
 
     <!-- Mostrar errores de validación -->
     @if($errors->any())
@@ -48,8 +48,8 @@
             <label for="email" class="form-label">Email</label>
             <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
         </div>
-        <button type="submit" class="btn btn-success">Save</button>
-        <a href="{{ route('professors.index') }}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{{ route('professors.index') }}" class="btn btn-secondary">Guardar</a>
     </form>
 </div>
 @endsection

@@ -16,6 +16,19 @@
         </div>
     </nav>
 
+    <!-- Mensaje de Bienvenida -->
+    <div class="container my-4">
+        <div class="alert alert-info text-center" role="alert">
+            <h3>¡Bienvenido a la Aplicación de Gestión de Profesores y Empresas!</h3>
+            <p>Aquí puedes gestionar a los profesores y las empresas asociadas.</p>
+        </div>
+    </div>
+
+    <!-- Imagen de Cabecera centrada y más pequeña -->
+    <div class="text-center">
+        <img class="img-fluid" style="max-width: 25%;" src="{{ asset('images/instituto.jpg') }}" alt="Instituto Francisco de los Ríos">
+    </div>
+
     <!-- Contenido Principal -->
     <div class="container my-4 flex-grow-1">
         @yield('content')
