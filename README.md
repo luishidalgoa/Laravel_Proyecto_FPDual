@@ -14,7 +14,9 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
 - **Interfaz de Usuario**: Una interfaz amigable construida con Bootstrap para facilitar la navegación e interacción.
   ![Descripción de la imagen](/public/images/imagen2.png)
 - **API RESTful**: Proporciona endpoints para interactuar con los recursos de empresas y profesores a través de una API RESTful.
+   ![Descripción de la imagen](/public/images/imagen4.png)
 - **Autenticación de Profesores**: Permite a los profesores registrarse, iniciar sesión y cerrar sesión mediante un sistema de autenticación seguro.
+  ![Descripción de la imagen](/public/images/imagen5.png)
 
 ## Estructura del Proyecto
 
