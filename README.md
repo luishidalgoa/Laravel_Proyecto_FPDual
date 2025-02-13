@@ -42,7 +42,7 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
 - **Borrar Información**: Elimina un profesor o empresa existente
    ![Descripción de la imagen](/public/images/imagen12.png)
 
-- **Autenticación de Profesores**: Permite a los profesores registrarse, iniciar sesión y cerrar sesión mediante un sistema de autenticación seguro.
+  **Autenticación de Profesores**: Permite a los profesores registrarse, iniciar sesión y cerrar sesión mediante un sistema de autenticación seguro.
   
 - **Iniciar Sesión**
   ![Descripción de la imagen](/public/images/imagen5.png)
@@ -192,3 +192,4 @@ Laravel_Proyecto_FPDual/
 
 - **Documentación**:
   - **Comentarios**: Añadidos comentarios explicativos para una correcta documentación del código.
+  - **README.md**: Mejoras en el README.md con imagenes y explicaciones
