@@ -77,6 +77,10 @@ Laravel_Proyecto_FPDual/
 │       ├── AuthResource.php
 │       ├── CompanyResource.php
 │       └── ProfessorResource.php
+│   └── Requests/
+│       ├── AuthRequest.php
+│       ├── CompanyRequest.php
+│       └── ProfessorRequest.php
 ├── bootstrap/
 ├── config/
 ├── database/
