@@ -1,6 +1,6 @@
 # Proyecto Laravel FPDual
 
-![Descripción de la imagen](/public/imagen/imagen1.png)
+![Descripción de la imagen](/public/images/imagen1.png)
 
 
 ## Acerca del Proyecto
