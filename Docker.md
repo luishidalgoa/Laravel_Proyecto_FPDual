@@ -124,6 +124,9 @@ Para iniciar todos los servicios definidos en `docker-compose.yml`, ejecuta:
 docker-compose up -d
 ```
 
+ahora podras acceder a tu aplicación Laravel en `http://localhost:8000`. En mi caso lo he desplegado en AWS por lo que accedere a traves de 
+[http://luishidalgoa.duckdns.org:32769](http://luishidalgoa.duckdns.org:32769)
+![alt text](image.png)
 ### 📌 4.2. Detener los contenedores
 ```bash
 docker-compose down
