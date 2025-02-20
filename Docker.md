@@ -1,19 +1,17 @@
-# 📌 Documentación: Despliegue de Laravel con Docker
+# Documentación: Despliegue de Laravel con Docker
 
-Este documento detalla paso a paso el proceso de despliegue de una aplicación Laravel utilizando Docker, así como la explicación del `Dockerfile` utilizado en el proceso.
-
-## 🛠️ 1. Prerrequisitos
-Antes de comenzar, asegúrate de tener instalado:
+## 1. Prerrequisitos
+Antes de comenzar, nos aseguramos de tener instalado:
 
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose (opcional)](https://docs.docker.com/compose/install/)
 - Git (para clonar el repositorio si es necesario)
 
-## 📂 2. Ubicación del `Dockerfile`
-El `Dockerfile` se encuentra en la ruta **raíz** del proyecto Laravel. Esto significa que al construir la imagen, todo el código fuente del proyecto estará disponible en la imagen Docker.
+## 2. Ubicación del `Dockerfile`
+El `Dockerfile` se encuentra en la ruta **raíz** del proyecto Laravel. por lo
 
-## 📄 3. Contenido del `Dockerfile`
-El `Dockerfile` se encarga de configurar un entorno basado en PHP con Apache para ejecutar Laravel dentro de un contenedor. A continuación, se explica su contenido:
+## 3. Contenido del `Dockerfile`
+El `Dockerfile` se encargara de construir una imagen paso por paso en base a lo que le programemos, Por decirlo de otra forma es como automatizar el interactuar con un sistema operativo
 
 ```dockerfile
 # Usamos la imagen oficial de PHP con Apache
@@ -63,16 +61,10 @@ EXPOSE 80
 CMD ["apache2-foreground"]
 ```
 
-### 🔍 Explicación del `Dockerfile`
+### Explicación del `Dockerfile`
 
 1. **Imagen Base**
-   - `FROM php:8.3.0-apache-bullseye` → Utiliza PHP 8.3 con Apache como servidor web.
-
-2. **Instalación de Dependencias**
-   - Se instalan las bibliotecas necesarias para Laravel (`git`, `curl`, `zip`, `mbstring`, etc.).
-
-3. **Extensiones PHP**
-   - Se instalan las extensiones necesarias para Laravel (`pdo_mysql`, `mbstring`, `bcmath`, `gd`, etc.).
+   - `FROM php:8.3.0-apache-bullseye` Utiliza PHP 8.3 con Apache como servidor web.
 
 4. **Composer**
    - Se copia Composer desde una imagen optimizada para no tener que instalarlo manualmente.
@@ -88,17 +80,17 @@ CMD ["apache2-foreground"]
    - `WORKDIR /var/www/html` → Define la raíz del proyecto dentro del contenedor.
 
 8. **Copia del Código y Dependencias**
-   - `COPY . .` → Copia el código fuente dentro del contenedor.
-   - `RUN composer install --no-dev --optimize-autoloader` → Instala las dependencias sin las de desarrollo, optimizando el autoloader.
+   - `COPY . .` Copia el código fuente dentro del contenedor.
+   - `RUN composer install --no-dev --optimize-autoloader` Instala las dependencias sin las de desarrollo, optimizando el autoloader.
 
 9. **Permisos**
-   - `chown -R www-data:www-data /var/www/html` → Ajusta los permisos para Apache.
+   - `chown -R www-data:www-data /var/www/html` da permisos a Apache para acceder a los archivos.
 
 10. **Exposición del Puerto y Inicio de Apache**
-    - `EXPOSE 80` → Expone el puerto 80 del contenedor.
-    - `CMD ["apache2-foreground"]` → Inicia Apache cuando el contenedor arranca.
+    - `EXPOSE 80` Expone el puerto 80 del contenedor.
+    - `CMD ["apache2-foreground"]` Inicia Apache cuando el contenedor arranca.
 
-## 🚀 4. Uso de `docker-compose.yml`
+## 4. Uso de `docker-compose.yml`
 
 Se ha configurado un archivo `docker-compose.yml` que permite ejecutar Laravel de manera sencilla. El contenido del archivo es el siguiente:
 
@@ -118,8 +110,8 @@ networks:
     driver: bridge
 ```
 
-### 📌 4.1. Levantar los contenedores con `docker-compose`
-Para iniciar todos los servicios definidos en `docker-compose.yml`, ejecuta:
+### 4.1. Levantar los contenedores con `docker-compose`
+Para arrancar el compose debemos escribir el siguiente comando en la terminal. (usamos -d para arrancarlo en 2º plano)
 ```bash
 docker-compose up -d
 ```
@@ -127,12 +119,7 @@ docker-compose up -d
 ahora podras acceder a tu aplicación Laravel en `http://localhost:8000`. En mi caso lo he desplegado en AWS por lo que accedere a traves de 
 [http://luishidalgoa.duckdns.org:32769](http://luishidalgoa.duckdns.org:32769)
 ![alt text](image.png)
-### 📌 4.2. Detener los contenedores
-```bash
-docker-compose down
-```
-Esto detendrá y eliminará los contenedores creados.
 
-## 🔗 5. Repositorio del Proyecto
+## 5. Repositorio del Proyecto
 Este despliegue ha sido realizado sobre el siguiente repositorio:
 [Laravel_Proyecto_FPDual](https://github.com/luishidalgoa/Laravel_Proyecto_FPDual)
