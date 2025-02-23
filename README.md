@@ -199,6 +199,7 @@ Laravel_Proyecto_FPDual/
    ```sh
    composer install
    npm install
+   npm run build
    ```
 3. Copia el archivo `.env.example` a `.env` y configura tus variables de entorno:
 
