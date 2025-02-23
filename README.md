@@ -81,61 +81,108 @@ La estructura del proyecto sigue la estructura estándar del framework Laravel:
 
 ```text
 Laravel_Proyecto_FPDual/
+├── .editorconfig
+├── .env
+├── .env.example
+├── .gitattributes
+├── .gitignore
+├── .phpunit.result.cache
 ├── app/
+│   ├── Actions/
 │   ├── Http/
-│   │   └── Controllers/
-│   │       ├── API/
-│   │       │   ├── AuthController.php
-│   │       │   ├── CompanyApiController.php
-│   │       │   └── ProfessorApiController.php
-│   │       ├── CompanyController.php
-│   │       ├── ProfessorController.php
-│   │       └── Controller.php
+│   │   ├── Controllers/
+│   │   │   ├── API/
+│   │   │   │   ├── AuthController.php
+│   │   │   │   ├── CompanyApiController.php
+│   │   │   │   └── ProfessorApiController.php
+│   │   │   ├── CompanyController.php
+│   │   │   ├── ProfessorController.php
+│   │   │   └── Controller.php
+│   │   ├── Middleware/
+│   │   └── Requests/
+│   │       ├── AuthRequest.php
+│   │       ├── CompanyRequest.php
+│   │       └── ProfessorRequest.php
 │   ├── Models/
 │   │   ├── Company.php
 │   │   └── Professor.php
+│   ├── Policies/
 │   ├── Providers/
 │   └── Resources/
 │       ├── AuthResource.php
 │       ├── CompanyResource.php
 │       └── ProfessorResource.php
-├── bootstrap/
-├── config/
-├── database/
-│   ├── migrations/
-│   └── seeders/
-│       ├── CompanysSeeder.php
-│       └── ProfessorSeeder.php
-├── public/
-├── resources/
-│   ├── views/
-│   │   ├── companys/
-│   │   │   ├── create.blade.php
-│   │   │   ├── index.blade.php
-│   │   │   ├── show.blade.php
-│   │   │   └── edit.blade.php
-│   │   ├── professors/
-│   │   │   ├── create.blade.php
-│   │   │   ├── index.blade.php
-│   │   │   ├── show.blade.php
-│   │   │   └── edit.blade.php
-│   │   └── layouts/
-│   │       └── app.blade.php
-├── routes/
-│   └── web.php
-├── storage/
-├── tests/
-├── vendor/
-├── .env
-├── .env.example
-├── .gitattributes
-├── .gitignore
 ├── artisan
+├── bootstrap/
+│   ├── app.php
+│   └── cache/
+│       └── providers.php
 ├── composer.json
 ├── composer.lock
+├── config/
+│   ├── app.php
+│   ├── auth.php
+│   ├── cache.php
+│   ├── database.php
+│   └── ...
+├── database/
+│   ├── factories/
+│   │   ├── CompanyFactory.php
+│   │   └── ProfessorFactory.php
+│   ├── migrations/
+│   │   ├── 2023_01_01_000000_create_companies_table.php
+│   │   ├── 2023_01_01_000001_create_professors_table.php
+│   │   └── ...
+│   └── seeders/
+│       ├── CompanySeeder.php
+│       └── ProfessorSeeder.php
 ├── package.json
 ├── phpunit.xml
+├── postcss.config.js
+├── public/
+│   ├── css/
+│   ├── js/
+│   └── images/
 ├── README.md
+├── resources/
+│   ├── css/
+│   ├── js/
+│   ├── lang/
+│   └── views/
+│       ├── companys/
+│       │   ├── create.blade.php
+│       │   ├── index.blade.php
+│       │   ├── show.blade.php
+│       │   └── edit.blade.php
+│       ├── professors/
+│       │   ├── create.blade.php
+│       │   ├── index.blade.php
+│       │   ├── show.blade.php
+│       │   └── edit.blade.php
+│       └── layouts/
+│           └── app.blade.php
+├── routes/
+│   ├── api.php
+│   ├── channels.php
+│   ├── console.php
+│   └── web.php
+├── storage/
+│   ├── app/
+│   ├── framework/
+│   │   ├── cache/
+│   │   ├── sessions/
+│   │   ├── testing/
+│   │   └── views/
+│   └── logs/
+├── tailwind.config.js
+├── tests/
+│   ├── Feature/
+│   │   ├── CompanyTest.php
+│   │   └── ProfessorTest.php
+│   └── Unit/
+│       ├── CompanyUnitTest.php
+│       └── ProfessorUnitTest.php
+├── vendor/
 └── vite.config.js
 ```
 
