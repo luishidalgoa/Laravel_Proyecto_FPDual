@@ -2,63 +2,78 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Professor;
+use App\Models\User;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class ProfessorSeeder extends Seeder
 {
-    /**
-     * Ejecutar los seeds de la base de datos.
-     */
     public function run(): void
     {
-        // Creando el primer registro de profesor
-        Professor::create([
-            'id' => 1,
-            'fullname' => 'Antonio Marin',
-            'age' => 40,
-            'gender' => 'male',
-            'address' => 'calle falsa 123',
-            'telephone' => '675662991',
-            'email' => 'pamarin@iesfranciscodelosrios.es',
-            'password' => Hash::make('password123')  // Agregar una contraseña segura
-        ]);
+        // Crear usuarios primero
+        $users = [
+            [
+                'name' => 'Antonio Marin',
+                'email' => 'pamarin@iesfranciscodelosrios.es',
+                'password' => 'password123',
+                'professor_data' => [
+                    'age' => 40,
+                    'gender' => 'male',
+                    'address' => 'calle falsa 123',
+                    'telephone' => '675662991'
+                ]
+            ],
+            [
+                'name' => 'Maria Lopez',
+                'email' => 'mlopez@iesfranciscodelosrios.es',
+                'password' => 'password123',
+                'professor_data' => [
+                    'age' => 35,
+                    'gender' => 'female',
+                    'address' => 'avenida siempre viva 742',
+                    'telephone' => '612345678'
+                ]
+            ],
+            [
+                'name' => 'Juan Perez',
+                'email' => 'jperez@iesfranciscodelosrios.es',
+                'password' => 'password123',
+                'professor_data' => [
+                    'age' => 50,
+                    'gender' => 'male',
+                    'address' => 'calle del sol 456',
+                    'telephone' => '698765432'
+                ]
+            ],
+            [
+                'name' => 'Laura Sanchez',
+                'email' => 'lsanchez@iesfranciscodelosrios.es',
+                'password' => 'password123',
+                'professor_data' => [
+                    'age' => 28,
+                    'gender' => 'female',
+                    'address' => 'plaza mayor 789',
+                    'telephone' => '677889900'
+                ]
+            ]
+        ];
 
-        // Creando el segundo registro de profesor
-        Professor::create([
-            'id' => 2,
-            'fullname' => 'Maria Lopez',
-            'age' => 35,
-            'gender' => 'female',
-            'address' => 'avenida siempre viva 742',
-            'telephone' => '612345678',
-            'email' => 'mlopez@iesfranciscodelosrios.es',
-            'password' => Hash::make('password123')  // Agregar una contraseña segura
-        ]);
+        foreach ($users as $userData) {
+            // Crear usuario
+            $user = User::create([
+                'name' => $userData['name'],
+                'email' => $userData['email'],
+                'password' => Hash::make($userData['password'])
+            ]);
 
-        // Creando el tercer registro de profesor
-        Professor::create([
-            'id' => 3,
-            'fullname' => 'Juan Perez',
-            'age' => 50,
-            'gender' => 'male',
-            'address' => 'calle del sol 456',
-            'telephone' => '698765432',
-            'email' => 'jperez@iesfranciscodelosrios.es',
-            'password' => Hash::make('password123')  // Agregar una contraseña segura
-        ]);
-
-        // Creando el cuarto registro de profesor
-        Professor::create([
-            'id' => 4,
-            'fullname' => 'Laura Sanchez',
-            'age' => 28,
-            'gender' => 'female',
-            'address' => 'plaza mayor 789',
-            'telephone' => '677889900',
-            'email' => 'lsanchez@iesfranciscodelosrios.es',
-            'password' => Hash::make('password123')  // Agregar una contraseña segura
-        ]);
+            // Crear profesor relacionado
+            Professor::create([
+                'user_id' => $user->id,
+                'fullname' => $userData['name'],
+                'email' => $userData['email'],
+                ...$userData['professor_data']
+            ]);
+        }
     }
 }

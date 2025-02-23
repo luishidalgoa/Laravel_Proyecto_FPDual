@@ -10,11 +10,11 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
 ## Características
 
 - **Gestión de Empresas**: Administra registros de empresas incluyendo nombre, dirección, teléfono, correo electrónico y fecha de creación.
-  
+- 
 - **Gestión de Profesores**: Administra registros de profesores incluyendo nombre completo, edad, género, dirección, teléfono y correo electrónico.
-  
+- 
 - **Interfaz de Usuario**: Una interfaz amigable construida con Bootstrap para facilitar la navegación e interacción.
-  
+- 
 - **Vista index**: Una vista que muestra los profesores con las empresas que le corresponde del mismo modo que con las empresas.
   ![Descripción de la imagen](/public/images/imagen2.png)
 
@@ -22,7 +22,7 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
   ![Descripción de la imagen](/public/images/imagen6.png)
 
 - **Vista Edit**: Una vista que permite actualizar los datos de los profesores y empresas existentes.
-  
+- 
   ![Descripción de la imagen](/public/images/imagen7.png)
 - **Vista Show**: Una vista que muestra los detalles completos de un profesor y las empresas asociadas a él.
   ![Descripción de la imagen](/public/images/imagen8.png)
@@ -48,10 +48,10 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
   ![Descripción de la imagen](/public/images/imagen5.png)
 
 - **Obtención del usuario logueado a través del token**
-   ![Descripción de la imagen](/public/images/imagen16.png)
+   ![Descripción de la imagen](/public/images/imagen15.png)
 
 - **Cerrar sesión**
- ![Descripción de la imagen](/public/images/imagen15.png)
+ ![Descripción de la imagen](/public/images/imagen16.png)
  
 ## Estructura del Proyecto
 
@@ -77,10 +77,6 @@ Laravel_Proyecto_FPDual/
 │       ├── AuthResource.php
 │       ├── CompanyResource.php
 │       └── ProfessorResource.php
-│   └── Requests/
-│       ├── AuthRequest.php
-│       ├── CompanyRequest.php
-│       └── ProfessorRequest.php
 ├── bootstrap/
 ├── config/
 ├── database/
@@ -197,3 +193,14 @@ Laravel_Proyecto_FPDual/
 - **Documentación**:
   - **Comentarios**: Añadidos comentarios explicativos para una correcta documentación del código.
   - **README.md**: Mejoras en el README.md con imagenes y explicaciones
+
+**Implementación de Jetstream**:
+  - **Profesores**: Ahora los profesores se pueden crear y registrarse desde Jetstream y la API de `AuthController` funciona junto con esto.
+  - **Vistas personalizadas**: Para cada profesor hay una vista personalizada que permite hacer observaciones sobre los alumnos implementando un CRUD para las notas.
+  - **Panel personalizado**: Para cada profesor hay un panel personalizado que permite gestionar las contraseñas, cambiar email y demás funcionalidades.
+  
+**Seguridad**
+  - **Inyección**: Se han implementado medidas de seguridad en los formularios de login para evitar inyecciones de código.
+
+**Testing**:
+  - **API**: Realización de Test feature para las clases de las API.
