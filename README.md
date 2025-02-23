@@ -63,6 +63,16 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
 
 - **Registrarse**
    ![Descripción de la imagen](/public/images/imagen19.png)
+
+- **Vista notas**
+   ![Descripción de la imagen](/public/images/imagen20.png)
+   
+- **Editar notas**
+   ![Descripción de la imagen](/public/images/imagen22.png)
+   
+- **Panel de control de usuario**
+   ![Descripción de la imagen](/public/images/imagen21.png)
+
   
  
 ## Estructura del Proyecto
