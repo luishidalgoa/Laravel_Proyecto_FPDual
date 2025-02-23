@@ -52,6 +52,18 @@ Este proyecto es una aplicación web basada en Laravel diseñada para gestionar 
 
 - **Cerrar sesión**
  ![Descripción de la imagen](/public/images/imagen16.png)
+
+ **Login**: Se ha implementado un login con jetstream para registrar a los profesores y dentro de su panel pueden añadir observaciones de sus alumnos tambien tienen un panel para gestionar apartados de su cuenta.
+
+- **Inicio**
+  ![Descripción de la imagen](/public/images/imagen17.png)
+
+- **Iniciar sesión**
+   ![Descripción de la imagen](/public/images/imagen18.png)
+
+- **Registrarse**
+   ![Descripción de la imagen](/public/images/imagen19.png)
+  
  
 ## Estructura del Proyecto
 
