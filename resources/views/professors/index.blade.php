@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.plantilla')
 
 @section('title', 'Lista de profesores')
 
@@ -14,7 +14,7 @@
     @endif
 
     <!-- Botón para agregar un nuevo profesor -->
-    <a href="{{ route('professors.create') }}" class="btn btn-success mb-3">Añadir un profesor</a>
+    <a href="{{ route('welcome') }}" class="btn btn-success mb-3">Login/Registro</a>
 
     <!-- Botón para volver al index.blade.php dentro de layouts, centrado -->
     <div class="text-center mb-3">

@@ -5,26 +5,29 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Professor extends Model
 {
-    use HasApiTokens, HasFactory;
+    use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'fullname',
         'age',
         'gender',
         'address',
         'telephone',
-        'email',
-        'password', // Agregado
+        'email'  // Eliminamos el password aquí
     ];
 
-    protected $hidden = [
-        'password', // Agregado
-    ];
+    // Relación con User
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
+    // Relación con Companies (mantenida)
     public function companies(): HasMany
     {
         return $this->hasMany(Company::class);

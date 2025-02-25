@@ -41,15 +41,21 @@ class ProfessorApiController extends Controller
     }
 
     // Método para eliminar un profesor
-    public function destroy($id)
-    {
-        // Buscamos el profesor por su ID o lanzamos un error si no lo encontramos
-        $professor = Professor::findOrFail($id);
-        
-        // Eliminamos el profesor
-        $professor->delete();
-        
-        // Retornamos una respuesta JSON vacía con el código HTTP 204 (sin contenido)
-        return response()->json(null, Response::HTTP_NO_CONTENT);
+// En app/Http/Controllers/API/ProfessorApiController.php
+public function destroy($id)
+{
+    // Buscamos el profesor por su ID o lanzamos un error si no lo encontramos
+    $professor = Professor::findOrFail($id);
+
+    // Eliminamos el usuario asociado al profesor
+    if ($professor->user) {
+        $professor->user->delete();
     }
+
+    // Eliminamos el profesor
+    $professor->delete();
+
+    // Retornamos una respuesta JSON vacía con el código HTTP 204 (sin contenido)
+    return response()->json(null, Response::HTTP_NO_CONTENT);
+}
 }

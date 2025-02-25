@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request; // Importamos la clase Request para gestionar los datos de la solicitud
-use Illuminate\Http\Resources\Json\JsonResource; // Importamos la clase base JsonResource para formatear la respuesta
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class CompanyResource extends JsonResource
 {
@@ -17,11 +17,12 @@ class CompanyResource extends JsonResource
         // Retornamos un array con los atributos de la compañía que queremos incluir en la respuesta
         return [
             'id' => $this->id,                        // ID de la compañía
-            'name' => $this->name,                     // Nombre de la compañía
-            'address' => $this->address,               // Dirección de la compañía
-            'telephone' => $this->telephone,           // Teléfono de la compañía
-            'email' => $this->email,                   // Correo electrónico de la compañía
-            'date_creation' => $this->date_creation,   // Fecha de creación de la compañía
+            'name' => $this->name,                    // Nombre de la compañía
+            'address' => $this->address,              // Dirección de la compañía
+            'telephone' => $this->telephone,          // Teléfono de la compañía
+            'email' => $this->email,                  // Correo electrónico de la compañía
+            'date_creation' => $this->date_creation,  // Fecha de creación de la compañía
+            'professor_id' => $this->professor_id,    // ID del profesor
             // Incluimos la relación con el profesor si está cargada, usando un recurso ProfessorResource
             'professor' => new ProfessorResource($this->whenLoaded('professor')),
             'created_at' => $this->created_at->toDateTimeString(), // Fecha de creación formateada

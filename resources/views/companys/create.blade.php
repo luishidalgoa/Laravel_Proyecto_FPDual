@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.plantilla')
 
 @section('title', 'Añadir una empresa')
 
