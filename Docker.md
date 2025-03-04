@@ -173,5 +173,8 @@ networks:
 ````
 
 ## 3. Despliegue en AWS
+Hariamos un `docker-compose up -d` para levantar los contenedores en segundo plano.
+Por ultimo hacemos `docker ps` para ver los contenedores que tenemos levantados.
+![alt text](image-2.png)
 como se puede observar estamos conectados al puerto 80 de la maquina el cual nos carga la aplicacion de react.
 ![alt text](image-1.png)
