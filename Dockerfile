@@ -36,7 +36,11 @@ WORKDIR /var/www/html
 COPY . .
 
 # Instalar las dependencias de Composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install
+
+RUN php artisan migrate
+
+RUN php artisan db:seed
 
 # Establecer permisos adecuados
 RUN chown -R www-data:www-data /var/www/html

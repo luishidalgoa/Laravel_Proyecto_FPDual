@@ -178,3 +178,13 @@ Por ultimo hacemos `docker ps` para ver los contenedores que tenemos levantados.
 ![alt text](image-2.png)
 como se puede observar estamos conectados al puerto 80 de la maquina el cual nos carga la aplicacion de react.
 ![alt text](image-1.png)
+
+
+## ¿COMO SABER SI EL REACT ESTA LLAMANDO A LA API?
+
+Cuando accedas en el navbar a profesores o empresas veras algo como una tabla con varios datos. En ese mismo instante la app de react realizara una llamada a Laravel para hacer un getAll y traerse todas las empresas.
+
+![alt text](image-3.png)
+
+> NOTA: debido a problemas tecnicos con Vite de react. al hacer el npm build, las rutas de la aplicacion fallan. Es probable que si accedes por ejemplo /companys y recargues la pagina esta diga que no existe o que si accedes a una pagina en concreto o al formulario de crear nueva empresa pues estas vistas fallen . Es problema de VITE + React al construir la aplicacion no de docker
+
