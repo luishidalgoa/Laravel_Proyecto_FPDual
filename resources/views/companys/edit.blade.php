@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">Editar la empresa</h1>
+    <h1 class="h1 mb-4">Editar la empresa</h1>
 
     <!-- Formulario para editar una compañía existente -->
     <form action="{{ route('companys.update', $company->id) }}" method="POST" class="card p-4">

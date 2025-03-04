@@ -24,12 +24,12 @@ class NoteController extends Controller
 
         $user = Auth::user();
 
-        Note::updateOrCreate(
-            ['user_id' => $user->id],
-            ['notes' => $request->notes]
-        );
+        Note::create([
+            'user_id' => $user->id,
+            'notes' => $request->notes,
+        ]);
 
-        return back()->with('status', 'Notas guardadas correctamente');
+        return back()->with('status', 'Nota guardada correctamente');
     }
 
     // Mostrar el formulario de edición de una nota

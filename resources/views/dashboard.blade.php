@@ -36,7 +36,7 @@
                             @csrf
                             <div class="mb-3">
                                 <textarea class="form-control" name="notes" rows="4" 
-                                    placeholder="Escribe tus observaciones aquí..." required>{{ old('notes', $notes->first()->notes ?? '') }}</textarea>
+                                    placeholder="Escribe tus observaciones aquí..." required>{{ old('notes') }}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar Observación</button>
                         </form>
