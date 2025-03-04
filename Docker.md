@@ -123,3 +123,55 @@ ahora podras acceder a tu aplicación Laravel en `http://localhost:8000`. En mi 
 ## 5. Repositorio del Proyecto
 Este despliegue ha sido realizado sobre el siguiente repositorio:
 [Laravel_Proyecto_FPDual](https://github.com/luishidalgoa/Laravel_Proyecto_FPDual)
+
+
+# Despliegue frontend con Docker
+
+Para esta nueva seccion mostrare el docker build del front en react y del docker compose actualizado con backend y frontend. Por ultimo lo desplegare en AWS.
+
+## 1. Dockerfile Frontend
+En el siguiente fragmento de codigo se puede ver que creamos un contenedor con node y apache, en el cual instalamos las dependencias necesarias para el front y copiamos el build del front en la carpeta de apache.
+```dockerfile
+FROM node:18 AS build-stage
+WORKDIR /react-app
+COPY . .
+RUN npm install
+RUN npm run build
+
+# Fase de producción con Apache
+FROM httpd:2.4
+WORKDIR /usr/local/apache2/htdocs/
+COPY --from=build-stage /react-app/dist/ .
+```
+
+## 2. Docker-compose.yml
+Cabe destacar como nota que el fichero dockerfile lo tengo subido en el github del proyecto laravel, por eso hacemos un ../carpeta_del_proyecto_react . Para acceder al dockerbuild del proyecto react. Dando por hecho que tanto el proyecto ract como el de laravel se hubican en el mismo arbol de directorios.
+
+Lo que estamos haciendo es construir la imagen de ambos contenedores y les abrimos los puertos ha ambos y los conectamos a la misma red para que el front se pueda comunicar con el back
+````yaml
+services:
+  laravel:
+    build:
+      context: ./
+    ports:
+      - "8000:80"
+    working_dir: /var/www/html
+    networks:
+      - laravel_network
+
+  react:
+    build:
+      context: ../React-App_DWEC--LARAVEL/
+    ports:
+      - "80:80"
+    networks:
+      - laravel_network
+
+networks:
+  laravel_network:
+    driver: bridge
+````
+
+## 3. Despliegue en AWS
+como se puede observar estamos conectados al puerto 80 de la maquina el cual nos carga la aplicacion de react.
+![alt text](image-1.png)
