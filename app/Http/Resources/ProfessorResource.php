@@ -25,6 +25,8 @@ class ProfessorResource extends JsonResource
             'email' => $this->email,                   // Correo electrónico del profesor
             'created_at' => $this->created_at->toDateTimeString(), // Fecha de creación formateada
             'updated_at' => $this->updated_at->toDateTimeString(), // Fecha de última actualización formateada
+            // Incluimos la relación con las compañías si está cargada, usando un recurso CompanyResource
+            'companies' => CompanyResource::collection($this->whenLoaded('companies')),
         ];
     }
 }

@@ -13,15 +13,15 @@ class ProfessorApiController extends Controller
     // Método para obtener la lista de todos los profesores
     public function index()
     {
-        // Retornamos una colección de recursos ProfessorResource con todos los profesores
-        return ProfessorResource::collection(Professor::all());
+        // Retornamos una colección de recursos ProfessorResource con todos los profesores y sus compañías relacionadas
+        return ProfessorResource::collection(Professor::with('companies')->get());
     }
     
     // Método para mostrar un profesor específico por su ID
     public function show($id)
     {
         // Buscamos el profesor por su ID, o lanzamos un error si no lo encontramos
-        $professor = Professor::findOrFail($id);
+        $professor = Professor::with('companies')->findOrFail($id);
         
         // Retornamos el recurso ProfessorResource con el profesor encontrado
         return new ProfessorResource($professor);
@@ -41,21 +41,20 @@ class ProfessorApiController extends Controller
     }
 
     // Método para eliminar un profesor
-// En app/Http/Controllers/API/ProfessorApiController.php
-public function destroy($id)
-{
-    // Buscamos el profesor por su ID o lanzamos un error si no lo encontramos
-    $professor = Professor::findOrFail($id);
+    public function destroy($id)
+    {
+        // Buscamos el profesor por su ID o lanzamos un error si no lo encontramos
+        $professor = Professor::findOrFail($id);
 
-    // Eliminamos el usuario asociado al profesor
-    if ($professor->user) {
-        $professor->user->delete();
+        // Eliminamos el usuario asociado al profesor
+        if ($professor->user) {
+            $professor->user->delete();
+        }
+
+        // Eliminamos el profesor
+        $professor->delete();
+
+        // Retornamos una respuesta JSON vacía con el código HTTP 204 (sin contenido)
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
-
-    // Eliminamos el profesor
-    $professor->delete();
-
-    // Retornamos una respuesta JSON vacía con el código HTTP 204 (sin contenido)
-    return response()->json(null, Response::HTTP_NO_CONTENT);
-}
 }
