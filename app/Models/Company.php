@@ -1,5 +1,5 @@
 <?php
-
+//hola
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory; // Importa el trait HasFactory
